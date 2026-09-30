@@ -1,16 +1,33 @@
-# Happy Birthday Madan
+# L'Arc des Pensées
 
-A single-page birthday site for **29 October**. It is one self-contained `index.html` with no build step and no dependencies.
+Wisdom that rings when you touch it.
 
-## What's on the page
+A single-page interactive piece that hangs ten philosophical quotes as beaded chains beneath the Arc de Triomphe. Each bead is a letter. Move your cursor or finger through the chains and they swing, collide and chime like a wind chime.
 
-- **Cover:** a stacked "Happy Birthday, Madan" headline, a live countdown to 29 October and a throwback photo in an arch frame.
-- **The Arc:** swipe sideways from the cover to an interactive canvas of the Arc de Triomphe. Philosophy quotes hang as beaded chains that chime when you move through them. Press `M` to toggle sound and use the arrow keys to change the quote.
-- **Celebration section:** scroll down for skylines of Paris, Boston, New York and London, a Manchester United fan block, and a Formula 1 card.
+It is one self-contained `index.html`, with no build step and no dependencies apart from two Google Fonts.
+
+## Features
+
+- **The scene:** a night sky, the Paris skyline, the plaza, the Arc de Triomphe and the eternal flame beneath it, all drawn on canvas.
+- **Beaded quotes:** the current quote hangs as chains of lettered beads. Beads glow where you have touched them.
+- **Physics:** Verlet integration with stick, cloth and contact constraints. Sweep through the chains to disturb them. Click or tap to strum everything near the pointer.
+- **Sound:** chimes are synthesized in the browser (tubular tones through a small convolution hall) and tuned to a pentatonic scale, so any cluster of strikes stays consonant. Audio starts after your first click or tap.
+- **Ten quotes:** Socrates, Marcus Aurelius, Nietzsche, Camus, Kant, Seneca, Sartre, Aristotle, Heraclitus and Lao Tzu, each with its source.
+- **Responsive:** a side-by-side layout on wide screens and a stacked layout on phones and tablets.
+- **Accessible:** buttons have labels and visible focus, quote changes are announced through an `aria-live` region, and `prefers-reduced-motion` is respected.
+
+## Controls
+
+| Action | Input |
+| --- | --- |
+| Make the chains chime | Move the pointer through the letters |
+| Strum nearby chains | Click or tap |
+| Next or previous quote | The arrow buttons, or the left and right arrow keys |
+| Toggle sound | The Sound button, or `M` |
 
 ## Run locally
 
-Open `index.html` in any modern browser.
+Open `index.html` in any modern browser. No server is needed.
 
 ## Publish with GitHub Pages
 
@@ -23,14 +40,14 @@ Open `index.html` in any modern browser.
 
 | What | Where in `index.html` |
 | --- | --- |
-| Name and headline | The `<h1>` inside `.cover` |
-| Birthday date and countdown | The `tick()` function (`new Date(y, 9, 29)`; months start at 0) |
-| Photo | The `<img>` in `.arch`, a base64 data URI. Replace it with a file path if you prefer |
-| Quotes on the Arc | The `QUOTES` array |
-| Fixtures and players | The `.stage` block |
+| Quotes, authors and sources | The `QUOTES` array in the script |
+| Colours and fonts | The CSS variables in `:root` |
+| Chime notes | The `SCALE` array (frequencies in Hz) |
+| Layout breakpoint | The `@media (max-width: 1199px)` block |
 
-## Notes
+## Tech
 
-- Skylines, the stadium and the F1 car are original inline SVG drawings. No club crests, logos or official photos are used.
-- Fonts (Cormorant Garamond and Josefin Sans) load from Google Fonts and fall back to system fonts offline.
-- The cover photo is embedded in the file. If the repository is public, the photo is public too.
+- Vanilla HTML, CSS and JavaScript
+- Canvas 2D for the scene and the chains
+- Web Audio API for the chimes
+- Cormorant Garamond and Josefin Sans from Google Fonts, with system fallbacks when offline
